@@ -217,8 +217,7 @@ drawSideStripes:
 renderLeftStripe:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw stripe
+    stosw                             ; Draw stripe
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -253,8 +252,7 @@ drawLaneDividers:
 renderLeftDivider:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw divider
+    stosw                             ; Draw divider
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip row for dashed effect
@@ -281,7 +279,6 @@ drawPlayerCarMiddle:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3112                      ; Middle lane position
@@ -302,8 +299,7 @@ renderMiddleCarBody:
 renderMiddleInteriorLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -314,8 +310,7 @@ renderMiddleInteriorLeft:
 renderMiddleInteriorRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -326,8 +321,7 @@ renderMiddleInteriorRight:
 renderMiddleWheelsLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
@@ -338,14 +332,12 @@ renderMiddleWheelsLeft:
 renderMiddleWheelsRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
     loop renderMiddleWheelsRight      ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -356,7 +348,6 @@ drawPlayerCarLeft:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3086                      ; Left lane position
@@ -377,8 +368,7 @@ renderLeftCarBody:
 renderLeftInteriorLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -389,8 +379,7 @@ renderLeftInteriorLeft:
 renderLeftInteriorRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -401,8 +390,7 @@ renderLeftInteriorRight:
 renderLeftWheelsLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
@@ -413,14 +401,12 @@ renderLeftWheelsLeft:
 renderLeftWheelsRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
     loop renderLeftWheelsRight        ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -431,7 +417,6 @@ drawPlayerCarRight:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3138                      ; Right lane position
@@ -452,8 +437,7 @@ renderRightCarBody:
 renderRightInteriorLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -464,8 +448,7 @@ renderRightInteriorLeft:
 renderRightInteriorRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw interior
+    stosw                             ; Draw interior
     pop di                            ; Restore counters
     pop cx
     add di, 160                       ; Next row
@@ -476,8 +459,7 @@ renderRightInteriorRight:
 renderRightWheelsLeft:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
@@ -488,14 +470,12 @@ renderRightWheelsLeft:
 renderRightWheelsRight:
     push cx                           ; Save counters
     push di
-    mov cx, 1                         ; Width 1
-    rep stosw                         ; Draw wheel
+    stosw                             ; Draw wheel
     pop di                            ; Restore counters
     pop cx
     add di, 320                       ; Skip rows
     loop renderRightWheelsRight       ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -506,7 +486,6 @@ erasePlayerCarMiddle:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3110                      ; Car position
@@ -521,8 +500,7 @@ clearCarMiddleLoop:
     pop cx
     add di, 160                       ; Next row
     loop clearCarMiddleLoop           ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -533,7 +511,6 @@ erasePlayerCarLeft:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3084                      ; Car position
@@ -548,8 +525,7 @@ clearCarLeftLoop:
     pop cx
     add di, 160                       ; Next row
     loop clearCarLeftLoop             ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -560,7 +536,6 @@ erasePlayerCarRight:
     push ax
     push cx
     push di
-    push cx
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; Set ES
     mov di, 3136                      ; Car position
@@ -575,8 +550,7 @@ clearCarRightLoop:
     pop cx
     add di, 160                       ; Next row
     loop clearCarRightLoop            ; Loop
-    pop cx                            ; Restore registers
-    pop di
+    pop di                            ; Restore registers
     pop cx
     pop ax
     pop es
@@ -585,7 +559,8 @@ clearCarRightLoop:
 saveScreenBuffer:
     pusha                             ; Save all registers
     push ds
-	mov cx, 4000                      ; Screen size in bytes
+    push es                           ; Save ES to prevent segment loss
+	mov cx, 2000                      ; Screen size in words (4000 bytes)
     mov ax, 0xb800                    ; Video memory segment
     mov ds, ax                        ; DS = Video
     push cs                           ; CS -> ES
@@ -593,7 +568,8 @@ saveScreenBuffer:
     mov si, 0                         ; Source offset
     mov di, screenBuffer              ; Dest buffer
     cld                               ; Clear direction
-    rep movsb                         ; Copy bytes
+    rep movsw                         ; Copy words (2x faster on 8088 bus)
+    pop es                            ; Restore ES
     pop ds
 	popa                              ; Restore all registers
     ret
@@ -602,7 +578,7 @@ restoreScreenBuffer:
     pusha                             ; Save all registers
     push ds
 	push es
-	mov cx, 4000                      ; Screen size in bytes
+	mov cx, 2000                      ; Screen size in words (4000 bytes)
     mov ax, 0xb800                    ; Video memory segment
     mov es, ax                        ; ES = Video
     push cs                           ; CS -> DS
@@ -610,7 +586,7 @@ restoreScreenBuffer:
     mov si, screenBuffer              ; Source buffer
     mov di, 0                         ; Dest offset
     cld                               ; Clear direction
-    rep movsb                         ; Copy bytes
+    rep movsw                         ; Copy words (2x faster on 8088 bus)
     pop es
 	pop ds
 	popa                              ; Restore all registers
@@ -1030,24 +1006,24 @@ drawTree:
     mov ah,0x2F                       ; Top color
     mov al, '^'                       ; Top char
     stosw                             ; Draw
-    add cx, 3                         ; Increment
+    mov cx, 3                         ; Foliage width
     add di, 156                       ; Next line
     rep stosw                         ; Draw
-    add cx, 5                         ; Increment
+    mov cx, 5                         ; Foliage width
     add di, 152                       ; Next line
     rep stosw                         ; Draw
-    add cx, 1                         ; Increment
+    mov cx, 1                         ; Trunk width
     add di, 152                       ; Next line
     mov ah, 0x60                      ; Trunk color
     mov al, 'I'                       ; Trunk char
     rep stosw                         ; Draw
-    add cx, 1                         ; Increment
+    mov cx, 1                         ; Trunk width
     add di, 2                         ; Offset
     rep stosw                         ; Draw
-    add cx, 1                         ; Increment
+    mov cx, 1                         ; Trunk width
     add di, 154                       ; Next line
     rep stosw                         ; Draw
-    add cx, 1                         ; Increment
+    mov cx, 1                         ; Trunk width
     add di, 2                         ; Offset
     rep stosw                         ; Draw
 
@@ -1138,8 +1114,7 @@ renderObstacleBody:
 renderObstacleStripeLeft:
     push cx                           ; Save counter
     push di                           ; Save position
-    mov cx, 1                         ; Width
-    rep stosw                         ; Draw
+    stosw                             ; Draw
     pop di                            ; Restore position
     pop cx                            ; Restore counter
     add di, 160                       ; Next line
@@ -1152,8 +1127,7 @@ renderObstacleStripeLeft:
 renderObstacleStripeRight:
     push cx                           ; Save counter
     push di                           ; Save position
-    mov cx, 1                         ; Width
-    rep stosw                         ; Draw
+    stosw                             ; Draw
     pop di                            ; Restore position
     pop cx                            ; Restore counter
     add di, 160                       ; Next line
@@ -1166,8 +1140,7 @@ renderObstacleStripeRight:
 renderObstacleWheelsLeft:
     push cx                           ; Save counter
     push di                           ; Save position
-    mov cx, 1                         ; Width
-    rep stosw                         ; Draw
+    stosw                             ; Draw
     pop di                            ; Restore position
     pop cx                            ; Restore counter
     add di, 320                       ; Skip line
@@ -1180,8 +1153,7 @@ renderObstacleWheelsLeft:
 renderObstacleWheelsRight:
     push cx                           ; Save counter
     push di                           ; Save position
-    mov cx, 1                         ; Width
-    rep stosw                         ; Draw
+    stosw                             ; Draw
     pop di                            ; Restore position
     pop cx                            ; Restore counter
     add di, 320                       ; Skip line
@@ -1843,13 +1815,13 @@ skipMusicUpdate:
     mov word [cs:tickCount], 0        ; Reset tick
 
     call updateGameFrame              ; Update game
+    mov ax, cs                        ; Re-establish DS after call
+    mov ds, ax                        ; (subroutines may have changed DS)
     call drawScoreUi                  ; Draw score
 
 finishTimerInterrupt:
-    mov al, 0x20                      ; EOI command
-    out 0x20, al                      ; Send EOI
     popa                              ; Restore registers
-    iret                              ; Return
+    jmp far [cs:oldTimer]             ; Chain to original handler (handles EOI + IRET)
 
 restoreOriginalTimer:
     pusha                             ; Save registers
